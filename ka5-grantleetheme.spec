@@ -27,6 +27,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 GrantleeTheme library provides a class for loading theme packages
 containing set of templates.
 
+%description -l pl.UTF-8
+Biblioteka GrantleeTheme dostarcza klasę do ładowania paczek
+zawierających zestawy szablonów.
+
 %package devel
 Summary:	Header files for %{kaname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kaname}
