@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.12.2
+%define		kdeappsver	22.12.3
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		grantleetheme
 Summary:	Grantlee Theme
 Name:		ka5-%{kaname}
-Version:	22.12.2
+Version:	22.12.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	9c28e5be28d625f012e7c3eef56e39b6
+# Source0-md5:	b55f684d9c4af2208789827dfdf28ac5
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
