@@ -1,22 +1,22 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.12.3
+%define		kdeappsver	23.04.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		grantleetheme
 Summary:	Grantlee Theme
 Name:		ka5-%{kaname}
-Version:	22.12.3
-Release:	2
+Version:	23.04.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	b55f684d9c4af2208789827dfdf28ac5
+# Source0-md5:	8c31b016c398ac78aa77574f7cf2c296
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	cmake >= 2.8.12
-BuildRequires:	grantlee-qt5-devel >= 5.2
+BuildRequires:	grantlee-qt5-devel >= 5.3
 BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
 BuildRequires:	kf5-kguiaddons-devel >= %{kframever}
 BuildRequires:	kf5-knewstuff-devel >= %{kframever}
@@ -80,15 +80,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/grantlee/5.2/kde_grantlee_plugin.so
-%ghost %{_libdir}/libKF5GrantleeTheme.so.5
-%attr(755,root,root) %{_libdir}/libKF5GrantleeTheme.so.*.*.*
+%attr(755,root,root) %{_libdir}/grantlee/5.3/kde_grantlee_plugin.so
+%ghost %{_libdir}/libKPim5GrantleeTheme.so.5
+%attr(755,root,root) %{_libdir}/libKPim5GrantleeTheme.so.*.*.*
 %{_datadir}/qlogging-categories5/grantleetheme.categories
 %{_datadir}/qlogging-categories5/grantleetheme.renamecategories
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KF5/GrantleeTheme
 %{_libdir}/cmake/KF5GrantleeTheme
-%{_libdir}/libKF5GrantleeTheme.so
 %{_libdir}/qt5/mkspecs/modules/qt_GrantleeTheme.pri
+%{_includedir}/KPim5/GrantleeTheme
+%{_libdir}/cmake/KPim5GrantleeTheme
+%{_libdir}/libKPim5GrantleeTheme.so
+
