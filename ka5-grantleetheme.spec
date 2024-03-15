@@ -1,20 +1,22 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	23.08.4
+%define		kdeappsver	23.08.5
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		grantleetheme
 Summary:	Grantlee Theme
 Name:		ka5-%{kaname}
-Version:	23.08.4
+Version:	23.08.5
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	6588d450e2e3b8e316fca065833b67cb
+# Source0-md5:	95461cddadab088db7cc5664bc23f1ed
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
+BuildRequires:	Qt5DBus-devel >= %{qtver}
+BuildRequires:	Qt5Gui-devel >= %{qtver}
 BuildRequires:	cmake >= 3.20
 BuildRequires:	grantlee-qt5-devel >= 5.3
 BuildRequires:	kf5-extra-cmake-modules >= %{kframever}
@@ -26,6 +28,8 @@ BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
+BuildConflicts:	Qt6Dbus-devel
+BuildConflicts:	Qt6Gui-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -56,7 +60,8 @@ Pliki nagłówkowe dla programistów używających %{kaname}.
 	-G Ninja \
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
 	-DHTML_INSTALL_DIR=%{_kdedocdir} \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+	-DQT_MAJOR_VERSION=5
 %ninja_build -C build
 
 %if %{with tests}
